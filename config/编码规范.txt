@@ -1,4 +1,4 @@
-一、少了啊。。。。
+
 	
 二、action统一继承common包中的baseAction
 	baseAction只可以添加需要用到的Service实体,分页参数;
