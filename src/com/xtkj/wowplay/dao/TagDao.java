@@ -5,5 +5,5 @@ package com.xtkj.wowplay.dao;
  */
 public interface TagDao {
 
-
+	public String hcString="hc";
 }
