@@ -13,7 +13,7 @@ import java.util.Set;
 public class CourseDTO  {
 
 
-     private String id;
+     private int id;
      private SortDTO sort;
      private String coursename;
      private String picpath;
@@ -26,7 +26,7 @@ public class CourseDTO  {
     }
 
 
-    public CourseDTO(String id, SortDTO sort, String coursename, String picpath, String author, String CDesc) {
+    public CourseDTO(int id, SortDTO sort, String coursename, String picpath, String author, String CDesc) {
         this.id = id;
         this.sort = sort;
         this.coursename = coursename;
@@ -36,7 +36,7 @@ public class CourseDTO  {
     }
     
 
-    public CourseDTO(String id, SortDTO sort, String coursename, String picpath, String author, String CDesc, Set courseTags) {
+    public CourseDTO(int id, SortDTO sort, String coursename, String picpath, String author, String CDesc, Set courseTags) {
         this.id = id;
         this.sort = sort;
         this.coursename = coursename;
@@ -47,11 +47,11 @@ public class CourseDTO  {
     }
 
 
-    public String getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

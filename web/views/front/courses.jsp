@@ -16,6 +16,7 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="<%=basePath%>resources/front/assets/css/--muke.css"  type="text/css" />
     <link href="<%=basePath%>resources/front/assets/v2/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link rel="<%=basePath%>resources/front/stylesheet" media="screen" href="assets/css/common.css"/>
     <link rel="stylesheet" media="screen"
@@ -58,7 +59,7 @@
                         <c:forEach items="${sortList}" var="sort">
                             <c:if test="${sort.pid == 0}">
                                 <li>
-                                    <a href="<%=basePath%>views/front/courses.jsp?sort.id=${sort.id}">${sort.name}</a>
+                                    <a href="<%=basePath%>Course_initPage?sort.id=${sort.id}">${sort.name}</a>
                                 </li>
                             </c:if>
                         </c:forEach>
@@ -115,58 +116,18 @@
     </div>
 </header>
 <div class="container" id="content-container">
-    <h1 class="hidden-clip">wowplay-重拾学习乐趣</h1>
-    <div class="mod-breadcrumbs mod-list-breadcrumbs js-breadcrumbs"
-         style="padding-top:4px;">
-        <a href="<%=basePath%>" class="mod-breadcrumbs__nav">
-            全部课程
-        </a>
-        <span class="mod-breadcrumbs__arrow">&nbsp;&gt;&nbsp;</span>
-        <div class="breadcrumbs-nab disable-dropdown">
-            <a href="<%=basePath%>/CourseAction?sortId=<%=request.getParameter("sortId")%>"
-               class="mod-breadcrumbs__nav">
-                <%=request.getParameter("sortName")%>
-            </a>
-            <c:set var='sortId' scope='page' value='<%=request.getParameter("sortId")%>'/>
-        </div>
-
-        <span class="mod-breadcrumbs__arrow">&nbsp;&gt;&nbsp;</span>
-
-        <div class="breadcrumbs-nab disable-dropdown">
-            <a href="<%=basePath%>resources/front/main/sort_initSortTitle.action?sort.id=${chd1.id}"
-               class="mod-breadcrumbs__nav">
-                dddd
-            </a>
-        </div>
-        <span class="mod-breadcrumbs__arrow">&nbsp;&gt;&nbsp;</span> <span
-            class="mod-breadcrumbs__current"></span>
-
-        <div class="breadcrumbs-nab disable-dropdown">
-            <a href="<%=basePath%>resources/front/main/sort_initSortTitle.action?sort.id=${chd2.id}"
-               class="mod-breadcrumbs__nav">
-                dddd
-            </a>
-        </div>
-        <span class="mod-breadcrumbs__arrow">&nbsp;&gt;&nbsp;</span> <span
-            class="mod-breadcrumbs__current"></span>
-    </div>
-
     <div class="sort-menu-con" id="auto-test-1">
+
         <div class="sort-menu-border1">
             <dl class="sort-menu sort-menu1 clearfix">
-                <div style="height: 15px;"></div>
                 <dt style="font-size: 16px;color: #666">分类 :</dt>
-                <dd class="dd-all">
-                    <a href="<%=basePath%>">全部</a>
-                </dd>
-                <c:forEach items="${sortList}" var="sort">
-                    <c:if test="${sort.pid == sortId}">
+                <c:forEach items="${secSortList}" var="sort">
                         <dd class="dd-all">
-                            <a href="<%=basePath%>resources/front/main/sort_initSortTitle.action?sort.id=${sort.id}">
+                            <a href="<%=basePath%>Course_changeSelect.action?=${sort.id}">
                                     ${sort.name}
                             </a>
                         </dd>
-                    </c:if>
+
                 </c:forEach>
             </dl>
         </div>
@@ -174,10 +135,13 @@
             <div class="label-row js-label-row js-sort-menu-category">
                 <dl class="sort-menu sort-menu2 js-sort-menu clearfix">
                     <dt style="font-size: 16px;color: #666">标签 :</dt>
-                    <c:forEach items="${sort.tags}" var="tags">
+                    <dd class="dd-all">
+                        <a href="<%=basePath%>">全部</a>
+                    </dd>
+                    <c:forEach items="${tagList}" var="tag">
                         <dd>
-                            <a href="<%=basePath%>resources/front/main/sort_queryByTag.action?sort.id=${querySort}&tag.id=${tags.id}">
-                                <span class="js-label">${tags.name}</span>
+                            <a href="<%=basePath%>resources/front/main/sort_queryByTag.action?sort.id=${querySort}&tag.id=${tag.id}">
+                                <span class="js-label">${tag.name}</span>
                                 <i class="flags-close js-close"></i>
                             </a>
                         </dd>

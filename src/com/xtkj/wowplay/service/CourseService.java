@@ -1,6 +1,8 @@
 package com.xtkj.wowplay.service;
 
 import com.xtkj.wowplay.dto.CourseDTO;
+import com.xtkj.wowplay.entity.Course;
+import com.xtkj.wowplay.entity.Sort;
 
 import java.util.List;
 
@@ -11,6 +13,5 @@ public interface CourseService {
 
 
     /**根据sortId查找course集合*/
-    List<CourseDTO> getCourseListBySortId(String sortId);
-
+    List<Course> queryByFirstSort(Sort sort);
 }

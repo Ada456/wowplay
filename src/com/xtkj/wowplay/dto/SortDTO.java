@@ -1,9 +1,12 @@
 // default package
 package com.xtkj.wowplay.dto;
 
+import com.xtkj.wowplay.entity.Tag;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -12,7 +15,9 @@ public class SortDTO{
      private int id;
      private String name;
      private int pid;
-     private String tags ;
+     private String stringTags ;
+     private Set<Tag> tags ;
+
 
     public SortDTO() {
     }
@@ -24,7 +29,7 @@ public class SortDTO{
 
     }
 
-    public SortDTO(int id, String name, int pid,String tags) {
+    public SortDTO(int id, String name, int pid,Set<Tag> tags) {
         this.id = id;
         this.name = name;
         this.pid = pid;
@@ -56,11 +61,19 @@ public class SortDTO{
         this.pid = pid;
     }
 
-    public String getTags() {
+    public String getStringTags() {
+        return stringTags;
+    }
+
+    public void setStringTags(String stringTags) {
+        this.stringTags = stringTags;
+    }
+
+    public Set<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(Set<Tag> tags) {
         this.tags = tags;
     }
 }

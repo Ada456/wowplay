@@ -5,6 +5,7 @@ import com.xtkj.wowplay.dao.TagDao;
 
 import com.xtkj.wowplay.dto.TagDTO;
 
+import com.xtkj.wowplay.entity.Sort;
 import com.xtkj.wowplay.entity.Tag;
 import com.xtkj.wowplay.service.TagService;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,11 @@ import java.util.List;
 public class TagServiceImpl implements TagService {
 
     private TagDao tagDao;
+    List<TagDTO> tagList = new ArrayList<>();
 
     @Override
-    public List<TagDTO> getTagListBySortId(String sortId) {
-        List<TagDTO> tagList = new ArrayList<TagDTO>();
-        List<Tag> tags = tagDao.getTagBySortId(Integer.valueOf(sortId));
+    public List<TagDTO> queryByFirstSort(Sort sort) {
+        List<Tag> tags = tagDao.queryByFirstSort(sort);
         for (Tag tag : tags) {
             tagList.add(new TagDTO(tag.getId(), tag.getName()));
         }
@@ -43,4 +44,6 @@ public class TagServiceImpl implements TagService {
     public void setTagDao(TagDao tagDao) {
         this.tagDao = tagDao;
     }
+
+
 }

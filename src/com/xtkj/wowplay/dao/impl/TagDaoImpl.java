@@ -2,6 +2,7 @@ package com.xtkj.wowplay.dao.impl;
 
 import com.xtkj.wowplay.dao.BaseDao;
 import com.xtkj.wowplay.dao.TagDao;
+import com.xtkj.wowplay.entity.Sort;
 import com.xtkj.wowplay.entity.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,8 +19,7 @@ public class TagDaoImpl implements TagDao{
     BaseDao baseDao;
 
     @Override
-    public List<Tag> getTagBySortId(Integer sortId) {
-        return baseDao.findByHql("from Tag t where t.sort.id =" +sortId);
+    public List<Tag> queryByFirstSort(Sort sort) {
+        return baseDao.findByHql("from Tag t where t.sort.pid =" +sort.getId());
     }
-
 }

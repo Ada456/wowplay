@@ -2,6 +2,7 @@ package com.xtkj.wowplay.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,10 +16,8 @@ import javax.persistence.Table;
 
 /**
  * 视频评论
- * @author Administrator
  *
  */
-@SuppressWarnings("serial")
 @Entity
 @Table(name="TB_COMMENT")
 public class Comment implements Serializable{
@@ -34,7 +33,7 @@ public class Comment implements Serializable{
     private String videoname;	//评论对应视频名字
     private String username;	//学员名
     
-    private List<Comment> repComment;	//回复
+    private Set<Comment> repComment;	//回复
     
 	public Comment() {
 		
@@ -130,12 +129,12 @@ public class Comment implements Serializable{
 		this.username = username;
 	}
 	
-	public List<Comment> getRepComment() {
-		return repComment;
-	}
-	
-	public void setRepComment(List<Comment> repComment) {
-		this.repComment = repComment;
-	}
+//	public List<Comment> getRepComment() {
+//		return repComment;
+//	}
+//
+//	public void setRepComment(List<Comment> repComment) {
+//		this.repComment = repComment;
+//	}
 	
 }

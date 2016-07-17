@@ -85,6 +85,8 @@ public class BaseDaoImpl implements BaseDao {
 		return this.querySession().createQuery(hql).list();
 	}
 
+
+
 	/** 使用hql查询*/
 	@Override
 	public <T> List<T> findByHql(String hql, Object[] value) {

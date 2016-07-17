@@ -4,6 +4,7 @@ import com.xtkj.wowplay.dto.SortDTO;
 import com.xtkj.wowplay.entity.Sort;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/7/12 0012.
@@ -11,9 +12,19 @@ import java.util.List;
 public interface SortService {
 
     /**
-     * 取出一级分类和二级分类
+     * 取出一级分类
      */
-    List<SortDTO> getAllSortList();
+    List<Sort> getFirstSort();
 
-    Sort getSortNameById(String sortId);
+
+    /**
+     * 取出二级分类
+     */
+    List<Sort> querySecSort(Sort sort);
+
+
+    /**
+     * get方法
+     */
+    Sort getSortById(Sort sort);
 }

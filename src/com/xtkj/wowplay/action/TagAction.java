@@ -16,9 +16,4 @@ public class TagAction extends BaseAction{
     TagService tagService;
 
 
-    public void  getTagListBySortId(){
-        String sortId = getRequest().getParameter("sortid");
-        List<TagDTO> tagList = tagService.getTagListBySortId(sortId);
-    }
-
 }

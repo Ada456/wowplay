@@ -59,7 +59,7 @@ public class Course implements Serializable{
         this.id = id;
     }
 
-    @ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Sort.class )
+    @ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Sort.class ,fetch = FetchType.EAGER)
     @JoinColumn(name="SORTID")
     public Sort getSort() {
         return this.sort;
