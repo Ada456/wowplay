@@ -3,7 +3,6 @@ package com.xtkj.wowplay.dao.impl;
 import com.xtkj.wowplay.dao.BaseDao;
 import com.xtkj.wowplay.dao.SortDao;
 import com.xtkj.wowplay.entity.Sort;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -16,62 +15,23 @@ import java.util.List;
 public class SortDaoImpl implements SortDao {
 
 
+    @Override
+    public List<Sort> queryFirstSort() {
+        return baseDao.findByHql("from Sort s where s.pid =0");
+    }
+
+    @Override
+    public List<Sort> querySecSort(Sort sort) {
+        return baseDao.findByHql("from Sort s where s.pid ="+sort.getId());
+    }
+
+    @Override
+    public Sort queryById(Sort sort) {
+        return (Sort) baseDao.querySession().get(Sort.class, sort.getId());
+    }
+
+
     private BaseDao baseDao;
-
-    @Override
-    public Sort queryById(int id) {
-        return baseDao.findObjectById("Sort", id);
-    }
-
-    @Override
-    public void deleteSort(Sort sort) {
-
-    }
-
-    @Override
-    public Sort queryByName(Sort sort) {
-
-        return null;
-    }
-
-    @Override
-    public void addSort(Sort sort) {
-
-    }
-
-    @Override
-    public List<Sort> querySortByPId(Sort sort) {
-        baseDao.findByProperty(Sort.class.getName(), "pid", sort.getPid());
-        return null;
-    }
-
-    @Override
-    public void updateSort(Sort sort) {
-
-    }
-
-    @Override
-    public List<Sort> queryByPid(Sort sort) {
-
-        return null;
-    }
-
-    @Override
-    public List<Sort> queryAllSort() {
-
-        return baseDao.listAll(Sort.class.getName());
-
-    }
-
-    @Override
-    public List<Sort> queryAllFistSort() {
-        return null;
-    }
-
-    @Override
-    public List<Sort> quertChdSort(Sort sort) {
-        return null;
-    }
 
     public BaseDao getBaseDao() {
         return baseDao;

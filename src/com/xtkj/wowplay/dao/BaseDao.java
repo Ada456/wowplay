@@ -3,6 +3,7 @@ package com.xtkj.wowplay.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.xtkj.wowplay.entity.Sort;
 import org.hibernate.Session;
 
 /**
@@ -73,5 +74,6 @@ public interface BaseDao {
 	public <T> List<T> findByHql(String hql, int start, int limit);
 
 	public <T> List<T> findByHql(String hql);
+
 
 }

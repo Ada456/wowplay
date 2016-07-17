@@ -42,21 +42,22 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public List<Comment> getAllCommentByPage(Video video, Page page) {
-		List<Comment> commentList=null;
-		commentList=commentDao.getAllComment(video);
-		if(commentList==null){
-			page.setTotalRecord(0);
-		}else{
-			page.setTotalRecord(commentList.size());
-		}
-		page=page.splitPage(page);
-		commentList=commentDao.getCommentByPage(video, page);
-		if(commentList!=null){	//查询所有的回复
-			for(Comment comment:commentList){
-				comment.setRepComment(commentDao.getRepComment(comment));
-			}
-		}
-		return commentList;
+//		List<Comment> commentList=null;
+//		commentList=commentDao.getAllComment(video);
+//		if(commentList==null){
+//			page.setTotalRecord(0);
+//		}else{
+//			page.setTotalRecord(commentList.size());
+//		}
+//		page=page.splitPage(page);
+//		commentList=commentDao.getCommentByPage(video, page);
+//		if(commentList!=null){	//查询所有的回复
+//			for(Comment comment:commentList){
+//				comment.setRepComment(commentDao.getRepComment(comment));
+//			}
+//		}
+//		return commentList;
+		return null;
 	}
 
 	@Override

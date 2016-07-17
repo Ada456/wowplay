@@ -1,5 +1,6 @@
 package com.xtkj.wowplay.dao;
 
+import com.xtkj.wowplay.entity.Sort;
 import com.xtkj.wowplay.entity.Tag;
 
 import java.util.List;
@@ -9,9 +10,8 @@ import java.util.List;
  */
 public interface TagDao {
 
-
     /**
-     * 通过sortId查出标签集合
+     * 通过一级分类查出标签集合
      */
-    List<Tag> getTagBySortId(Integer integer);
+    List<Tag> queryByFirstSort(Sort sort);
 }

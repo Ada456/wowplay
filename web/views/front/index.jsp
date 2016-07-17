@@ -6,6 +6,12 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
+<c:if test="${sortList==null}">
+    <script>
+        window.location="<%=basePath%>Sort_getFirstSort.action";
+    </script>
+</c:if>
+
 <!DOCTYPE html>
 
 <html>
@@ -18,8 +24,6 @@
     <meta name="baidu-site-verification" content="XN2OVFQdUg">
     <title>首页 wowplay</title>
     <meta name="description" content="">
-    <%--跨站请求伪造--%>
-    <%--<meta name="csrf-token" content="d40e197917ad23c46fd09f38de8f7cdd851243ac">--%>
     <meta name="is-login" content="0">
     <meta name="is-open" content="1">
     <style type="text/css">
@@ -55,6 +59,7 @@
             height: 415,//设置图片区域高度(像素)
             txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
         });
+
     </script>
 </head>
 <body class="index">
@@ -78,30 +83,11 @@
                         href="<%=basePath%>views/front/courses.jsp">分类<b
                         class="caret"></b></a>
                     <ul id="sort" class="dropdown-menu">
-                        <c:if test="${sortList == null}">
-                            <script type="text/javascript">
-                                $(function () {
-                                    $.ajax({
-                                        type: 'post',
-                                        url: '<%=basePath%>Sort_getAll.action',
-                                        dataType: 'json',
-                                        success: function (data) {
-                                            for (var i = 0; i < data.length; i++) { //循环后台传过来的Json数组
-                                                var datas = data[i];
-                                                if (datas.pid == 0) {
-                                                    $("#sort").append("<li>" + "<a href='<%=basePath%>/front/courses.jsp?sortId=" + datas.id + "sortName="+datas.name+"'>" + datas.name + "</a></li>");
-                                                }
-                                            }
-                                        }
-                                    });
-                                })
-                            </script>
-                        </c:if>
                         <c:if test="${sortList!= null}">
                             <c:forEach items="${sortList}" var="sort">
                                 <c:if test="${sort.pid == 0}">
                                 <li>
-                                    <a href="<%=basePath%>views/front/courses.jsp?sortId=${sort.id}&sortName=${sort.name}">${sort.name}</a>
+                                    <a href="<%=basePath%>Course_initPage.action?sortId=${sort.id}">${sort.name}</a>
                                 </li>
                                 </c:if>
                             </c:forEach>
